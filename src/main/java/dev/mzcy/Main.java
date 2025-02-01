@@ -21,9 +21,20 @@ public class Main {
             System.out.println("3. Return book");
             System.out.println("4. Exit");
             System.out.print("Enter choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (Exception e) {
+                for (int i = 0; i < 200; i++) {
+                    System.out.println();
+                }
+                System.out.println("Invalid choice.");
+                scanner.nextLine();
+                continue;
+            }
             scanner.nextLine();
 
+            String isbn;
             switch (choice) {
                 case 1:
                     for (int i = 0; i < 200; i++) {
@@ -36,7 +47,7 @@ public class Main {
                         System.out.println();
                     }
                     System.out.print("Enter ISBN: ");
-                    String isbn = scanner.nextLine();
+                    isbn = scanner.nextLine();
                     library.borrowBook(isbn);
                     break;
                 case 3:
